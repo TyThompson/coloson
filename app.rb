@@ -29,6 +29,11 @@ set :show_exceptions, false
     json DB["evens"]
   end
 
+  get "/numbers/evens/sum" do
+    sum = DB["evens"].reduce(:+)
+    json {"status" => "ok", "sum" => sum}
+  end
+
   post "/numbers/evens" do
     number = params[:number]
     if number.to_i%2 == 0 && number == number.to_i.to_s
@@ -56,9 +61,7 @@ set :show_exceptions, false
 
   get "/numbers/primes/sum" do
     sum = DB["primes"].reduce(:+)
-
     json {"status" => "ok", "sum" => sum}
-
   end
 
   post "/numbers/primes" do
@@ -115,6 +118,11 @@ set :show_exceptions, false
   get "/numbers/odds" do
     DB["odds"] ||= []
     json DB["odds"]
+  end
+
+  get "/numbers/odds/sum" do
+    sum = DB["odds"].reduce(:+)
+    json {"status" => "ok", "sum" => sum}
   end
 
   post "/numbers/odds" do
