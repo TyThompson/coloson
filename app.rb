@@ -5,16 +5,10 @@ require "json"
 require "./tests.rb"
 require "prime.rb"
 
-DB = {
-  "evens" => [],
-  "odds" => [],
-  "primes" => [],
-  "account" => []
-}
-
 class Coloson < Sinatra::Base
 
-
+set :logging, true
+set :show_exceptions, false
   # set :show_exceptions, false
   # error do |e|
   #   raise e
